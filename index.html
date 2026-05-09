@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HI CRUSH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fef0f5;
+            color: #d6336c;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .main-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+        .btn-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+        button {
+            padding: 12px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+        }
+        #yesBtn {
+            background-color: #ff4d79;
+            color: white;
+        }
+        #yesBtn:hover {
+            background-color: #e63967;
+            transform: scale(1.1);
+        }
+        #noBtn {
+            background-color: #f8d2e0;
+            color: #d6336c;
+            position: relative;
+        }
+        .credit {
+            font-size: 1.2rem;
+            color: #b02458;
+            position: absolute;
+            bottom: 30px;
+        }
+        .message-box {
+            display: none;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            color: #e63967;
+        }
+        @media (max-width: 600px) {
+            .main-text { font-size: 1.8rem; }
+            button { padding: 10px 30px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-text">
+        HI CRUSH<br>
+        CAN I COURT YOU?
+    </div>
+
+    <div class="btn-container">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">NO 💔</button>
+    </div>
+
+    <div class="message-box" id="msgBox"></div>
+
+    <div class="credit">Created by Rhonel</div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const msgBox = document.getElementById('msgBox');
+
+        // YES button action
+        yesBtn.addEventListener('click', () => {
+            msgBox.style.display = 'block';
+            msgBox.textContent = 'YAY!! WALA NG BAWIAN🥰❤️';
+            // Hide buttons
+            document.querySelector('.btn-container').style.display = 'none';
+        });
+
+        // NO button runs away when clicked/hovered
+        function moveNoBtn() {
+            const x = Math.floor(Math.random() * (window.innerWidth - 120));
+            const y = Math.floor(Math.random() * (window.innerHeight - 80));
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        noBtn.addEventListener('mouseover', moveNoBtn);
+        noBtn.addEventListener('click', moveNoBtn);
+    </script>
+</body>
+</html>
